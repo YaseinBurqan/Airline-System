@@ -1,0 +1,26 @@
+{
+  "name": "airline-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaseinBurqan/Airline-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YaseinBurqan/Airline-System/issues"
+  },
+  "homepage": "https://github.com/YaseinBurqan/Airline-System#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.3.0"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
