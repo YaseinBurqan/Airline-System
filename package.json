@@ -21,6 +21,8 @@
     "@faker-js/faker": "^7.3.0"
   },
   "dependencies": {
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
   }
 }
