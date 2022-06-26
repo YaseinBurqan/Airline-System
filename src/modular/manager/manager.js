@@ -33,13 +33,12 @@ setInterval(() => {
   console.log(`Manager: new flight with ID '${flight.Details.flightID}' have been scheduled`);
   let payload = { flight: flight };
   events.emit("new-flight", payload);
-  // console.log(payload);
 }, 10000);
 
 events.on("arrived", arrived);
 
 function arrived(payload) {
   setTimeout(() => {
-    console.log(`Manager: we're greatly thankful for the amazing flight, ${payload.flight.Details.pilot}`);
+    console.log(`Manager: we're greatly thankful for the amazing flight, "${payload.flight.Details.pilot}"`);
   }, 10);
 }
