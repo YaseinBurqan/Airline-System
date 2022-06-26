@@ -4,7 +4,6 @@ Be notified when a new flight is scheduled.
 Be notified when a flight took off.
 Be notified when a flight has arrived.*/
 const events = require("../events/events");
-const faker = require("@faker-js/faker");
 
 require("../manager/manager");
 require("../pilot/pilot");

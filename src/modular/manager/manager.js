@@ -3,7 +3,6 @@
 const { faker } = require("@faker-js/faker");
 
 const events = require("../events/events");
-const flight = require("../system/system");
 require("../pilot/pilot");
 
 // he manager should:
