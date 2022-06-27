@@ -1,18 +1,20 @@
 "use strict";
 
+// const events = require("../events/events");
+// require("../pilot/pilot");
+
+require("dotenv").config();
 const { faker } = require("@faker-js/faker");
+const client = require("socket.io-client");
+let host = `http://localhost:${process.env.PORT}/`;
 
-const events = require("../events/events");
-require("../pilot/pilot");
+const managerConnection = client.connect(host);
 
-// he manager should:
-// Alert the pilot and the system when there is a new flight.
-// Be notified when a flight has arrived.
+//---------------------------
+//---------------------------
 
-events.on("newFlight", newFlight);
-
-function newFlight(payload) {}
-
+// events.on("newFlight", newFlight);
+// function newFlight(payload) {}
 setInterval(() => {
   let id = faker.datatype.number();
   let name = faker.name.findName();
@@ -30,14 +32,14 @@ setInterval(() => {
   };
 
   console.log(`Manager: new flight with ID '${flight.Details.flightID}' have been scheduled`);
-  let payload = { flight: flight };
-  events.emit("new-flight", payload);
+  // events.emit("new-flight", payload);
+  managerConnection.emit("new-flight", flight);
 }, 10000);
 
-events.on("arrived", arrived);
-
-function arrived(payload) {
+//---------------------------
+// events.on("arrived", arrived);
+managerConnection.on("arrived", (flight) => {
   setTimeout(() => {
-    console.log(`Manager: we're greatly thankful for the amazing flight, "${payload.flight.Details.pilot}"`);
-  }, 10);
-}
+    console.log(`Manager: we're greatly thankful for the amazing flight, "${flight.Details.pilot}"`);
+  }, 3000);
+});
