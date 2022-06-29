@@ -14,33 +14,33 @@ const airline = server.of("/airline"); //namespace
 
 //---------------------------
 server.on("connection", (client) => {
-  console.log("connected ", client.id);
+  console.log("manager connected ", client.id);
 
-  // events.on("new-flight", newFlight);
   client.on("new-flight", (flight) => {
-    console.log(flight);
+    console.log("Flight : ", flight);
     airline.emit("new-flight", flight);
-  });
-});
-
-//---------------------------
-
-server.on("connection", (client) => {
-  console.log("connected to airline system ", client.id);
-
-  //---------------------------
-
-  // events.on("took-off", tookOff);
-  client.on("took-off", (flight) => {
-    console.log(flight);
+    // server.emit("new-flight", flight);
   });
 
-  //---------------------------
-
-  // events.on("arrived", arrived);
   client.on("arrived", (flight) => {
-    console.log(flight);
+    console.log("Flight : ", flight);
+    // airline.emit("new-flight", flight);
+    server.emit("arrived", flight);
   });
 });
 
 //---------------------------
+
+airline.on("connection", (client) => {
+  client.on("took-off", (flight) => {
+    console.log("Flight : ", flight);
+  });
+});
+
+//---------------------------
+
+airline.on("connection", (client) => {
+  client.on("arrived", (flight) => {
+    console.log("Flight : ", flight);
+  });
+});

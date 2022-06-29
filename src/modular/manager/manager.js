@@ -6,7 +6,10 @@
 require("dotenv").config();
 const { faker } = require("@faker-js/faker");
 const client = require("socket.io-client");
-let host = `http://localhost:${process.env.PORT}/`;
+const PORT = process.env.PORT || 3001;
+let host = `http://localhost:${PORT}/`;
+// const pilotConnection = client.connect(host);
+const airlineConnection = client.connect(`${host}airline`);
 
 const managerConnection = client.connect(host);
 
@@ -38,8 +41,8 @@ setInterval(() => {
 
 //---------------------------
 // events.on("arrived", arrived);
-managerConnection.on("arrived", (flight) => {
+airlineConnection.on("new-flight", (flight) => {
   setTimeout(() => {
     console.log(`Manager: we're greatly thankful for the amazing flight, "${flight.Details.pilot}"`);
-  }, 3000);
+  }, 7000);
 });
