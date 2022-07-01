@@ -1,3 +1,3 @@
 "use strict";
 
-require("./src/modular/system/system");
+require("./src/system/system");
