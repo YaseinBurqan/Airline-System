@@ -6,4 +6,4 @@
 
 ### Socket.io Branch
 
-![Events Airline System](./assets/socket.io.jpg)
+![messageQueue Airline System](./assets/messageQueue.jpg)

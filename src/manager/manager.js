@@ -8,9 +8,7 @@ const { faker } = require("@faker-js/faker");
 const client = require("socket.io-client");
 const PORT = process.env.PORT || 3001;
 let host = `http://localhost:${PORT}/`;
-// const pilotConnection = client.connect(host);
 const airlineConnection = client.connect(`${host}airline`);
-
 const managerConnection = client.connect(host);
 
 //---------------------------
