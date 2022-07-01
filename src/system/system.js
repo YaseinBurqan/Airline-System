@@ -43,7 +43,7 @@ server.on("connection", (client) => {
       });
       delete queue.flights[id];
     });
-    console.log(Object.keys(queue.flights));
+    console.log(queue);
   });
   client.on("delete", (id) => {
     delete queue.flights[id];
